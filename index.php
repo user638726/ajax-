@@ -19,7 +19,6 @@
 
 <body>
     /*增加註解*/
-    
     <h1 class="header">AJAX 非同步的Javascript 及 XML 技術</h1>
     <div class="types">
         <a href="xhr.html">XMLHttpRequest</a>
