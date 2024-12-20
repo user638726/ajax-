@@ -8,8 +8,7 @@
     <title>XMLHttpRequest</title>
     <link rel="shortcut icon" href="#" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
     <style>
         ul li {
             margin: 5px;
@@ -59,6 +58,7 @@
         let data = JSON.parse(response);
         console.log(JSON.parse(response));
         let entrys = data.entry;
+        let events = '';
         for (let i = 0; i < entrys.length; i++) {
 
             let li = '';
@@ -67,8 +67,13 @@
             li += `-`;
             li += `${entrys[i].author.name}`;
             li += `</li>`;
-            $('ul').append(li);
+            events += li;
+
         }
+
+        let ul = document.getElementsByTagName('ul')[0];
+        ul.innerHTML = events;
+
     }
 
     xhr.send();
