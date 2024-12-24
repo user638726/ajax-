@@ -102,8 +102,13 @@
   }
 
   //刪除資料的函式
-  function del() {
+  function del(id) {
+    let chk = confirm('確定要刪除嗎？');
+    if (chk) {
 
+      $.post('./api/delete.php', { id }, function () {
+        console.log('deleted');
+      })
+    }
   }
-
 </script>
