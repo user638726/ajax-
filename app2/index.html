@@ -58,8 +58,10 @@
               <a class="nav-link" href="javascript:query(${item.classroom})">${item.classroom}</a>
              </li>`
         $("#classesList").append(c);
-        query(data[0].classroom);
       })
+      if ($("#students").html() == '') {
+        query(data[0].classroom);
+      }
     })
   }
   let CreateModal
@@ -74,6 +76,7 @@
 
   //查詢指定班的學生資料的函式
   function query(code) {
+    console.log(code)
     $.get("./api/query.php", { code }, function (students) {
       let data = JSON.parse(students);
       //console.log(data);
@@ -110,12 +113,12 @@
     })
   }
 
-
+  let EditModal
   //取得編輯資料表單內容
   function getEditForm(id) {
     $.get("./edit_form.php", { id }, function (html) {
       $("#modal").html(html);
-      let EditModal = new bootstrap.Modal('#EditModal');
+      EditModal = new bootstrap.Modal('#EditModal');
       EditModal.show();
     })
   }
