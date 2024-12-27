@@ -1,7 +1,8 @@
+<!-- Modal -->
 <div class="modal fade" id="CreateModal" tabindex="-1" aria-labelledby="CreateModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-    <form action="api/create.php" method="post">
+    <form action="#" method="post">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="CreateModalLabel">新增學生</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -25,14 +26,38 @@
       </div>
       <div class="mb-3">
           <label for="major" class="form-label">科系</label>
-          <input type="text" class="form-control" id="major" >
+          <input type="text" name="major" class="form-control" id="major" >
       </div>
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id='send'>儲存</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
-        <button type="submit" class="btn btn-primary">儲存</button>
       </div>
     </form>
     </div>
   </div>
 </div>
+<script>
+
+$("#send").on("click",function(){
+   let formData={
+    'uni_id':$("#uni_id").val(),
+    'seat_num':$("#seat_num").val(),
+    'name':$("#name").val(),
+    'classroom':$("#classroom").val(),
+    'major':$("#major").val()
+   }
+
+   $.post("api/insert.php",formData,function(){
+      getClasses()
+      alert("新增完成")
+      CreateModal.hide();
+      CreateModal.dispose();
+      $("#modal").html("");
+
+   })
+   //console.log(formData);
+})
+
+
+</script>
